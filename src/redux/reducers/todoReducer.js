@@ -42,6 +42,12 @@ const todoReducer = (state = initialState, action) => {
         data: state.data.filter((todo) => todo.id !== action.payload.id),
       };
 
+    case type.CLEAR_FINISHED_TODO:
+      return{
+        ...state,
+        data: state.data.filter((todo) => todo.status !== 1)
+      }
+    
     case type.SET_LOADING_TODO:
       return {
         ...state,

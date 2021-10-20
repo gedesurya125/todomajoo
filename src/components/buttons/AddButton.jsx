@@ -8,7 +8,8 @@ const AddButton = (props) => {
       backgroundColor: 'green',
       '&:hover':{
         backgroundColor: 'green'
-      }
+      },
+      ...props.sx
     }}>
       <AddCircleOutlineIcon sx={{color: 'white'}}/>
     </IconButton>

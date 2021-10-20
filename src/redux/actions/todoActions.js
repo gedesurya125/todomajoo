@@ -62,3 +62,7 @@ export const setLoadingTodoAction = () => ({
 export const unsetLoadingTodoAction = () => ({
   type: type.UNSET_LOADING_TODO
 })
+
+export const clearFinishedTodoAction = () => ({
+  type: type.CLEAR_FINISHED_TODO,
+})

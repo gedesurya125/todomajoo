@@ -3,6 +3,10 @@ import { styled, Typography } from "@mui/material";
 import { primaryWhite} from "../../settings/commonStyles";
 import AddButton from "../buttons/AddButton";
 import AddTodoModal from "../AddTodoModal/AddTodoModal";
+import DeleteButton from "../buttons/DeleteButton";
+import Alert from "../alert/Alert";
+import { useDispatch } from "react-redux";
+import { clearFinishedTodoAction } from "../../redux/actions/todoActions";
 
 const SideContainerRoot = styled("div")(({ theme }) => ({
   overflowY: "auto",
@@ -38,6 +42,21 @@ const SideContainerRoot = styled("div")(({ theme }) => ({
 
 const SideContainer = ({ children, title, sx }) => {
   const [addModalOpen, setAddModalOpen] = useState(false);
+  const [alertDeleteOpen, setAlertDeleteOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleOpenDeleteAlert = () => {
+    setAlertDeleteOpen(true);
+  }
+
+  const handleCloseDeleteAlert = () => {
+    setAlertDeleteOpen(false)
+  }
+
+  const handleClearFinishedTodo = () => {
+    dispatch(clearFinishedTodoAction());
+    handleCloseDeleteAlert()
+  }
 
   const handleAddModalOpen = () => {
     setAddModalOpen(true)
@@ -60,11 +79,13 @@ const SideContainer = ({ children, title, sx }) => {
         >
           {title}
         </Typography>
-        <AddButton onClick={handleAddModalOpen} className="head-icon"/>
+        <AddButton onClick={handleAddModalOpen} className="head-icon" sx={{display: title === "DONE" && "none"}}/>
+        <DeleteButton onClick={handleOpenDeleteAlert} className="head-icon" sx={{display: title === "TODO" && "none"}}/>
       </div>
 
       <div className="content">{children}</div>
       <AddTodoModal open={addModalOpen} handleClose={handleCloseAddModal}/>
+      <Alert message="Are you sure want to clear all finished todo ?" onSuccess={handleClearFinishedTodo} onFailed={handleCloseDeleteAlert} handleClose={handleCloseDeleteAlert} open={alertDeleteOpen}/>
     </SideContainerRoot>
   );
 };
