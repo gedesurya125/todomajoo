@@ -22,7 +22,7 @@ const StatusSelection = ({value, handleChange}) => {
         onChange={handleChange}
         row
       >
-        <FormControlLabel value="0" control={<Radio />} label="not Finish" />
+        <FormControlLabel value="0" control={<Radio />} label="Not finish" />
         <FormControlLabel value="1" control={<Radio />} label="Finish" />
       </RadioGroup>
     </FormControl>
