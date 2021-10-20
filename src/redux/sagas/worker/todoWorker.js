@@ -15,10 +15,10 @@ export function* getTodoWorker(action) {
       yield put(unsetLoadingTodoAction());
     } else {
       yield put(unsetLoadingTodoAction());
-      console.log("GOT UNKNOWN DATA STRUCTURE DETAILS:", response);
+      // console.log("GOT UNKNOWN DATA STRUCTURE DETAILS:", response);
     }
   } catch(err) {
     yield put(unsetLoadingTodoAction());
-    console.log("ERR AT getTodoWorker DETAILS:", err.response);
+    // console.log("ERR AT getTodoWorker DETAILS:", err.response);
   }
 }
