@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import TodoCard from "../todoCard/TodoCard";
 import UpdateTodoModal from "../UpdateTodoModal/UpdateTodoModal";
 import SkeletonTodoCard from "../todoCard/SkeletonTodoCard";
+// import { connect } from "react-redux";
 
 const CardContainerRoot = styled("div")(({ theme }) => ({
   backgroundColor: "gray",
@@ -47,7 +48,7 @@ const CardContainer = ({ children }) => {
 
     const unfinishedTodo = todo.data
       .filter((td) => Number(td.status) === 0)
-      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      .sort((a, b) =>  new Date(a.createdAt) - new Date(b.createdAt));
     return unfinishedTodo.map((td) => (
       <TodoCard
         handleOpenUpdateTodoModal={handleOpenUpdateTodoModal}
@@ -63,7 +64,7 @@ const CardContainer = ({ children }) => {
 
     const finishedTodo = todo.data
       .filter((td) => Number(td.status) === 1)
-      .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     return finishedTodo.map((td) => (
       <TodoCard
         handleOpenUpdateTodoModal={handleOpenUpdateTodoModal}
@@ -88,4 +89,10 @@ const CardContainer = ({ children }) => {
   );
 };
 
+// const mapStateToProps = (state) => ({
+//   todo: state.todo
+// })
+// export default connect(mapStateToProps)(CardContainer);
+
 export default CardContainer;
+
