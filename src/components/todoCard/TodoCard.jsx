@@ -20,6 +20,9 @@ const TodoCardRoot = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
     width: "48%",
   },
+  "& .card-content":{
+    margin: '1em 0'
+  },
   "& .card-info": {
     textAlign: "right",
   },
@@ -45,7 +48,7 @@ const TodoCard = ({ todoData, handleOpenUpdateTodoModal }) => {
           <Typography>{todoData.description}</Typography>
         </div>
         <div className="card-info">
-          <Typography variant="caption">
+          <Typography variant="caption"> Created At : {" "}
             {formatDate(todoData.createdAt)}
           </Typography>
         </div>

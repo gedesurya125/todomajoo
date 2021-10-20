@@ -4,6 +4,7 @@ import ModalLayout from "../modalLayout/ModalLayout";
 import { useDispatch } from "react-redux";
 import { deleteTodoByIdAction, upateTodoByIdAction } from "../../redux/actions/todoActions";
 import StatusSelection from "../statusSelection/StatusSelection";
+import {formatDate} from '../../tools/formatDate'
 // import { primaryWhite } from '../../settings/commonStyles'
 
 const UpdateTodoModal = ({ todoDataToUpdate, open, handleClose }) => {
@@ -65,6 +66,7 @@ const UpdateTodoModal = ({ todoDataToUpdate, open, handleClose }) => {
       <Typography variant="h5" fontWeight="bold">
         Update Todo
       </Typography>
+      <Typography sx={{marginBottom: '1em'}}>{`Created At: ${formatDate(todoDataToUpdate.createdAt)}`}</Typography>
 
       <TextField
         name="title"
@@ -87,7 +89,7 @@ const UpdateTodoModal = ({ todoDataToUpdate, open, handleClose }) => {
         sx={{ marginBottom: "1em" }}
       />
       <StatusSelection value={formData.status} handleChange={handleStatusChange}/>
-      <div style={{ textAlign: "right" }}>
+      <div style={{ textAlign: "right", marginTop: '1em' }}>
         <Button
           onClick={handleSaveTodo}
           sx={{ marginRight: "1em" }}
