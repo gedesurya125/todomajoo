@@ -63,7 +63,7 @@ const CardContainer = ({ children }) => {
 
     const finishedTodo = todo.data
       .filter((td) => Number(td.status) === 1)
-      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
     return finishedTodo.map((td) => (
       <TodoCard
         handleOpenUpdateTodoModal={handleOpenUpdateTodoModal}
