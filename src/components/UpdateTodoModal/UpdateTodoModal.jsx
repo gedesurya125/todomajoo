@@ -97,7 +97,7 @@ const UpdateTodoModal = ({ todoDataToUpdate, open, handleClose }) => {
         >
           Save
         </Button>
-        <Button sx={{display: Number(formData.status) === 1 && "none"}} onClick={handleDeleteTodo} variant="contained" color="error">
+        <Button sx={{display: Number(todoDataToUpdate.status) === 1 && "none"}} onClick={handleDeleteTodo} variant="contained" color="error">
           Delete
         </Button>
       </div>
